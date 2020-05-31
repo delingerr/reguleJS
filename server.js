@@ -1,10 +1,10 @@
-const path = require('path');
-const noteJSON = require('./db/db.json');
-const express = require('express');
+var path = require('path');
+var noteJSON = require('./db/db.json');
+var express = require('express');
 
-const PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
-const app = express();
+var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
 });
-
+ 
 app.get('/api/notes', (req, res) => {
   res.json(noteJSON);
 });
